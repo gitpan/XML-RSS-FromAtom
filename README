@@ -1,6 +1,9 @@
 NAME
     XML::RSS::FromAtom - create a XML::RSS object out of an Atom feed
 
+VERSION
+    version 0.02_01
+
 SYNOPSIS
         require XML::RSS::FromAtom;
         use LWP::Simple;
@@ -22,6 +25,20 @@ SYNOPSIS
 DESCRIPTION
     XML::RSS::FromAtom converts a Atom style feed into an XML::RSS object.
 
+ATTRIBUTES
+    syndicator
+        An instance of a class that will parse the chosen Atom feed. By
+        default, this is XML::Atom::Syndication, but it can be any class
+        that exposes an equivalent interface.
+
+    rss_processor
+        An instance of a class that will hold the converted Atom feed as
+        RSS. By default, this will be XML::RSS.
+
+    content
+        The Atom feed represented as a string. This will normally be
+        populated by a call to the parse() method.
+
 METHODS
     new( )
         Instanciates a new XML::RSS::FromAtom object
@@ -33,6 +50,12 @@ METHODS
     atom_to_rss ( $object )
         Converts an XML::Atom::Syndication::Element as returned by
         XML::Atom::Syndication get into an XML::RSS object.
+
+    build_rss_processor ()
+        Provides a default implementation for the rss_processor attribute.
+
+    build_syndicator ()
+        Provides a default implementation for the syndicator attribute.
 
 AUTHOR
     Marcus Thiesen, "<marcus@thiesen.org>"
@@ -55,4 +78,14 @@ COPYRIGHT & LICENSE
 
 CVS
     $Id: FromAtom.pm,v 1.1 2005/03/18 17:04:44 marcus Exp $
+
+AUTHOR
+    Stephen Cardie <stephenca@ls26.net>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2013 by Marcus Thiesen
+    <marcus@thiesen.org>.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
 
